@@ -1,0 +1,18 @@
+---
+# tasks file for webapp
+
+- name: Ensure /opt/static-sites exists
+  file:
+    path: /opt/static-sites
+    state: directory
+    owner: webapp
+    group: webapp
+    mode: '0755'
+
+- name: Deploy index.html from template
+  template:
+    src: index.html.j2
+    dest: /opt/static-sites/index.html
+    owner: webapp
+    group: webapp
+    mode: '0644'

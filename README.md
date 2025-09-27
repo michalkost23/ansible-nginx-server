@@ -1,28 +1,16 @@
-# Ansible Web Server Deployment
+# Ansible NGINX Server Setup
 
-## Popis
-Tento projekt nasazuje jednoduchý web server (NGINX) pomocí Ansible.
-
-- Webové soubory: `/opt/static-sites`
-- Web běží pod uživatelem: `webapp`
-- Firewall: UFW, povolené porty 22 a 80
-- Automatické bezpečnostní aktualizace: aktivní
-- Fail2ban: chrání proti brute-force útokům
+Tento projekt automatizuje konfiguraci Linuxového serveru s NGINX pomocí Ansible.
 
 ## Struktura projektu
-inventory/
-hosts.ini
-playbooks/
-site.yml
-roles/
-common/
-users/
-nginx/
-ufw/
-fail2ban/
-README.md
 
-## Spuštění
+- `inventory/` – seznam hostů
+- `group_vars/` – proměnné pro hosty
+- `playbooks/` – hlavní playbook a role
+- `roles/` – jednotlivé Ansible role (common, nginx, ufw, fail2ban, users, webapp)
+- `README.md` – tento soubor
+
+## Jak spustit playbook
+
 ```bash
-ansible-playbook -i inventory/hosts.ini playbooks/site.yml --become
-
+ansible-playbook -i inventory/hosts.ini playbooks/site.yml

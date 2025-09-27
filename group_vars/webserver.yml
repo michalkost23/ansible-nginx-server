@@ -1,0 +1,21 @@
+---
+# Skupinové proměnné pro webserver
+
+# Uživatel pod kterým poběží web
+web_user: webapp
+
+# Cesta ke statickým webovým souborům
+web_root: /opt/static-sites
+
+# Povolené porty na firewallu
+firewall_allowed_ports:
+  - 22
+  - 80
+
+# NGINX konfigurace
+nginx_server_name: "_"
+nginx_listen_port: 80
+
+# SSH zabezpečení
+disable_root_login: true
+allow_ssh_key_only: true

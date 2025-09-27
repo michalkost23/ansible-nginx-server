@@ -1,13 +1,18 @@
 ---
-- hosts: webserver
+- name: Configure and deploy NGINX web server
+  hosts: webserver
   become: yes
-  roles:
-  - common
-  - users
-  - nginx
-  - ufw
-  - fail2ban
 
+  vars_files:
+  - ../group_vars/webserver.yml
+
+  roles:
+    - common
+    - users
+    - ufw
+    - fail2ban
+    - nginx
+    - webapp
 
 
 
