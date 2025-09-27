@@ -1,0 +1,7 @@
+---
+- name: Ensure wwwebapp user exists
+  user:
+    name: wwwebapp
+    comment: "Web application user"
+    shell: /bin/bash
+    create_home: yes

@@ -1,0 +1,8 @@
+---
+- name: Ensure webapp user exists
+  user:
+    name: webapp
+    comment: "Web application user"
+    shell: /bin/bash
+    create_home: yes
+

@@ -1,0 +1,8 @@
+---
+- name: Ensure /opt/static-sites exists
+  file:
+    path: /opt/static-sites
+    state: directory
+    owner: wwwebapp
+    group: wwwebapp
+    mode: '0755'

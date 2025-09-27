@@ -1,0 +1,8 @@
+- import_tasks: user.yml
+- import_tasks: web.yml
+- import_tasks: firewall.yml
+- import_tasks: security.yml
+
+
+
+

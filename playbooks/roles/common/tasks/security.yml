@@ -1,0 +1,22 @@
+---
+- name: Install fail2ban and unattended-upgrades
+  apt:
+    name:
+      - fail2ban
+      - unattended-upgrades
+    state: present
+    update_cache: yes
+
+- name: Enable unattended upgrades
+  copy:
+    dest: /etc/apt/apt.conf.d/20auto-upgrades
+    content: |
+      APT::Periodic::Update-Package-Lists "1";
+      APT::Periodic::Unattended-Upgrade "1";
+
+- name: Start and enable fail2ban
+  service:
+    name: fail2ban
+    state: started
+    enabled: yes
+

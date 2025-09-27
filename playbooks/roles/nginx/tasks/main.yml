@@ -1,0 +1,39 @@
+---
+- name: Ensure /opt/static-sites exists
+  file:
+    path: /opt/static-sites
+    state: directory
+    owner: wwwebapp
+    group: wwwebapp
+    mode: '0755'
+
+- name: Deploy index.html template
+  template:
+    src: index.html.j2
+    dest: /opt/static-sites/index.html
+    owner: wwwebapp
+    group: wwwebapp
+    mode: '0644'
+
+- name: Deploy nginx site configuration
+  template:
+    src: webapp.conf.j2
+    dest: /etc/nginx/sites-available/webapp.conf
+
+- name: Enable nginx site
+  file:
+    src: /etc/nginx/sites-available/webapp.conf
+    dest: /etc/nginx/sites-enabled/webapp.conf
+    state: link
+    force: yes
+
+- name: Remove default nginx site
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: Restart nginx
+  service:
+    name: nginx
+    state: restarted
+    enabled: yes
